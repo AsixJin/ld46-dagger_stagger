@@ -1,0 +1,36 @@
+{
+	"_type": "Bleeper program",
+	"v": 1,
+	"s": [
+		{
+			"n": "game_over",
+			"i": [
+				20,
+				0,
+				127,
+				0
+			],
+			"s": "*@U*=U*:U*9U*6U*4U*3U*3U*5U*7U*;U*>U*AU*CU*JU*PU*YU*cU*jU*pU$uU$uU$sU$rU*mU*hU*bU*ZU*SU*LU*EU*@U"
+		},
+		{
+			"n": "game_start",
+			"i": [
+				20,
+				0,
+				127,
+				0
+			],
+			"s": "'CU'CU'DU(GU(IU(KU'RU'VU'VU"
+		},
+		{
+			"n": "got_stab",
+			"i": [
+				19,
+				0,
+				127,
+				0
+			],
+			"s": "&1U&BU&IU&IU&2U&)U&<U&KU&BU#>U#AU#OU"
+		}
+	]
+}
