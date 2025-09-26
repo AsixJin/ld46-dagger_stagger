@@ -8,6 +8,7 @@ var gamemode = 0
 var lives = 5
 var ticks = 0
 var steps = 0
+var score = 0
 var smap = getMap('map')
 var map = getMap('map');
 function getRand(min, max) {
@@ -51,7 +52,7 @@ var player = {
                 create_dagger()
             }
             daggers.forEach(draw_daggers)
-            println("Lives: " + lives.toString())
+            println("Lives: " + lives.toString() + "   " + "Score: " + score.toString())
             println("Steps: " + ticks.toString())
             gamemode = 1
         }
@@ -68,20 +69,20 @@ var create_dagger = function() {
     var y_pos = 13
     switch(direction) {
         case 0:
-            y_pos = 14
-            x_pos = getRand(2, 13)
+            y_pos = 15
+            x_pos = getRand(1, 14)
             break
         case 1:
-            y_pos = getRand(4, 13)
-            x_pos = 1
+            y_pos = getRand(3, 14)
+            x_pos = 0
             break
         case 2:
-            y_pos = 3
-            x_pos = getRand(2, 13)
+            y_pos = 2
+            x_pos = getRand(1, 14)
             break
         case 3:
-            y_pos = getRand(4, 13)
-            x_pos = 14
+            y_pos = getRand(3, 14)
+            x_pos = 15
             break
     }
     var dagger = {
@@ -139,9 +140,9 @@ var move_daggers = function(value, index, array) {
         }else {
             assets.bleeper.game_over.play()
         }
-    }else if (value.y <= 3 || value.y >= 14){
+    }else if (value.y <= 2 || value.y >= 15){
         array.splice(index, 1)
-    }else if(value.x <= 1 || value.x >= 14){
+    }else if(value.x <= 0 || value.x >= 15){
         array.splice(index, 1)
     }
 }
@@ -180,7 +181,7 @@ var tick = function() {
     draw(map, 0, 0)
     player.draw()
     daggers.forEach(draw_daggers)
-    println("Lives: " + lives.toString())
+    println("Lives: " + lives.toString() + "   " + "Score: " + score.toString())
     println("Steps: " + ticks.toString())
     if (lives <= 0) game_over();
 }
@@ -202,6 +203,7 @@ var game_over = function(){
     lives = 5
     steps = 0
     ticks = 0
+    score = 0
 }
 
 // Start Game
