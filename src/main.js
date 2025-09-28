@@ -7,6 +7,7 @@ var frames = 0
 var gamemode = 0
 var lives = 5
 var ticks = 0
+var last_tick_time = 0
 var steps = 0
 var score = 0
 var smap = getMap('map')
@@ -59,8 +60,8 @@ var player = {
     }
 }
 
-//x=14, 1, 
-//y=3, 14
+//x = 1 - 14 
+//y = 3 - 14
 var dagger_queue = 100
 var daggers = []
 var create_dagger = function() {
@@ -154,6 +155,8 @@ var draw_daggers = function(value, index, array) {
 var tick = function() {
     ticks += 1
     steps += 1 
+    score += 1 + get_bonus()
+    last_tick_time = Date.now()
     switch(steps) {
         case 25:
             dagger_count += 1
@@ -206,6 +209,27 @@ var game_over = function(){
     score = 0
 }
 
+var get_bonus = function(){
+        if (Date.now() <= last_tick_time + 1000){
+            return 5
+        }
+        else if (last_tick_time <= Date.now + 2000) {
+            return 4
+        }
+        else if (last_tick_time <= Date.now + 3000) {
+            return 3
+        }
+        else if (last_tick_time <= Date.now + 4000) {
+            return 2
+        }
+        else if (last_tick_time <= Date.now + 5000) {
+            return 1
+        }   
+        else {
+            return 0
+        }
+}
+
 // Start Game
 cls()
 draw(smap, 0, 0)
@@ -214,9 +238,9 @@ println("Steps-" + ticks.toString() + " Press ENTER to start!")
 exports.update = function () {
     frames += 1
     player.control()
+
+
     //if (btnp.A) print("A Button");
     //if (btnp.B) print("B Button");
     //if (btnp.start) print("Start Button");
-
-
 };
