@@ -195,8 +195,8 @@ var game_over = function(){
     draw(smap, 0, 0)
     player.draw()
     daggers.forEach(draw_daggers)
-    println("Lives-" + lives.toString() + " Game Over!")
-    println("Steps-" + ticks.toString() + " Press ENTER to start!")
+    println("Lives: " + lives.toString() + "   " + "Score: " + score.toString())
+    println("Steps: " + ticks.toString() + "   " + "GAME OVER")
 
     player.x = 8
     player.y = 8
@@ -233,8 +233,8 @@ var get_bonus = function(){
 // Start Game
 cls()
 draw(smap, 0, 0)
-println("Lives-" + lives.toString())
-println("Steps-" + ticks.toString() + " Press ENTER to start!")
+println("Lives: " + lives.toString())
+println("Steps: " + ticks.toString() + " Press ENTER to start!")
 exports.update = function () {
     frames += 1
     player.control()
